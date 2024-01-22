@@ -22,7 +22,6 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 	private JMenuItem addNew, printRec, end;				//File Menu Options.
 	private	JMenuItem  deposit, withdraw, delRec, search, searchName;	//Edit Menu Options.
 	private	JMenuItem oneByOne, allCustomer;				//View Menu Options.
-	private	JMenuItem change, style, theme;					//Option Menu Options.
 	private JMenuItem close, closeAll;					//Window Menu Options.
 	private	JMenuItem content, keyHelp, about;				//Help Menu Options.
 
@@ -75,7 +74,7 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 	public BankSystem () {
 
 		//Setting Program's Title.
-		super ("BankSystem [Pvt] Limited.");
+		super ("Banking System");
 
 		UIManager.addPropertyChangeListener (new UISwitchListener ((JComponent)getRootPane()));
 
@@ -160,25 +159,6 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 		allCustomer.setMnemonic ((int)'A');
 		allCustomer.addActionListener (this);
 
-		//MenuItems for OptionMenu.
-		change = new JMenuItem ("Change Background Color");
-		change.setAccelerator (KeyStroke.getKeyStroke(KeyEvent.VK_B, Event.CTRL_MASK));
-		change.setMnemonic ((int)'B');
-		change.addActionListener (this);
-		//Menu For Changing the Program's Layout.
-		style = new JMenu ("Change Layout Style");
-		style.setMnemonic ((int)'L');
-		for( int i = 0; i < radio.length ; i++ ) {			//Creating the subMenus of Style Menu.
-			radio[i] = new JRadioButtonMenuItem (strings[i]);	//Build an Array of Layouts to Apply.
-			radio[i].addItemListener (this);			//Setting their Actions.
-			group.add (radio[i]);					//Making them Grouped.
-			style.add (radio[i]);					//Adding to Style MenuOption.
-		}
-		//SubMenu of Theme For Applying different Themes to Program By Building an Array of Themes to Apply.
-		MetalTheme[] themes = { new DefaultMetalTheme(), new GreenTheme(), new AquaTheme(), 
-					new SandTheme(), new SolidTheme(), new MilkyTheme(), new GrayTheme() };
-		theme = new MetalThemeMenu ("Apply Theme", themes);		//Putting the Themes in ThemeMenu.
-		theme.setMnemonic ((int)'M');
 
 		//MenuItems for WindowMenu.
 		close = new JMenuItem ("Close Active Window");
@@ -224,13 +204,6 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 		mnuView.add (oneByOne);
 		mnuView.addSeparator ();
 		mnuView.add (allCustomer);
-
-		//Options Menu Items.
-		mnuOpt.add (change);
-		mnuOpt.addSeparator ();
-		mnuOpt.add (style);
-		mnuOpt.addSeparator ();
-		mnuOpt.add (theme);
 
 		//Window Menu Items.
 		mnuWin.add (close);
@@ -330,7 +303,7 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 		toolBar.add (btnKey);
 
 		//Creating the StatusBar of Program.
-		author = new JLabel (" " + "BankSystem [Pvt] Limited.", Label.LEFT);
+		author = new JLabel (" " + "Banking System", Label.LEFT);
 		author.setForeground (Color.black);
 		author.setToolTipText ("Program's Title");
 		welcome = new JLabel ("Welcome Today is " + d + " ", JLabel.RIGHT);
@@ -449,17 +422,6 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 			}
 
 		}
-		else if (obj == change) {
-
-			Color cl = new Color (153, 153, 204);
-			cl = JColorChooser.showDialog (this, "Choose Background Color", cl);
-			if (cl == null) { }
-			else {
-				desktop.setBackground (cl);
-				desktop.repaint ();
-			}
-
-		}
 		else if (obj == close) {
 
 			try {
@@ -501,8 +463,8 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 		}
 		else if (obj == about) {
 
-			String msg = "BankSystem [Pvt] Limited.\n\n" + "Created & Designed By:\n" + 
-				"Muhammad Wasif Javed\n\n" + "E-mail me:\n wasi_javed@hotmail.com";
+			String msg = "Banking System.\n\n" + "Created & Designed By:\n" + 
+				"Farhan Farooque\n\n" + "E-mail me:\n ffarooque@mun.ca";
 			JOptionPane.showMessageDialog (this, msg, "About BankSystem", JOptionPane.PLAIN_MESSAGE);
 
 		}
@@ -533,7 +495,7 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 			if (reply == JOptionPane.YES_OPTION) {
 				setVisible (false);	//Hide the Frame.
 				dispose();            	//Free the System Resources.
-				System.out.println ("Thanks for Using BankSystem\nAuthor - Muhammad Wasif Javed");
+				System.out.println ("Thanks for Using BankSystem\nAuthor - Farhan Farooque");
 				System.exit (0);        //Close the Application.
 			}
 			else if (reply == JOptionPane.NO_OPTION) {
@@ -660,13 +622,13 @@ public class BankSystem extends JFrame implements ActionListener, ItemListener {
 	String makeRecordPrint (int rec) {
 
 		String data;
-		String data0 = "               BankSystem [Pvt] Limited.               \n";	//Page Title.
+		String data0 = "               Banking System.               \n";	//Page Title.
 		String data1 = "               Customer Balance Report.              \n\n";	//Page Header.
 		String data2 = "  Account No.:       " + records[rec][0] + "\n";
 		String data3 = "  Customer Name:     " + records[rec][1] + "\n";
 		String data4 = "  Last Transaction:  " + records[rec][2] + ", " + records[rec][3] + ", " + records[rec][4] + "\n";
 		String data5 = "  Current Balance:   " + records[rec][5] + "\n\n";
-		String data6 = "          Copyright © 2003 Muhammad Wasif Javed.\n";	//Page Footer.
+		String data6 = "          Copyright ï¿½ 2024 Farhan Farooque.\n";	//Page Footer.
 		String sep0 = " -----------------------------------------------------------\n";
 		String sep1 = " -----------------------------------------------------------\n";
 		String sep2 = " -----------------------------------------------------------\n";
